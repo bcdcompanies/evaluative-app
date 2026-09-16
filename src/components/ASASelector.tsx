@@ -1,4 +1,4 @@
-import type { ASAClass, Assessment } from '../lib/types';
+import type { ASAClass } from '../lib/types';
 
 interface Props {
   value: ASAClass | '';
@@ -96,6 +96,3 @@ export default function ASASelector({ value, suggested, onChange }: Props) {
     </div>
   );
 }
-
-// Re-export helper to get suggested ASA from outside
-export type { ASAClass, Assessment };

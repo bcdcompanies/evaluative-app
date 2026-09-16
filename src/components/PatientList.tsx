@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import type { Assessment } from '../lib/types';
 import { calculateRisk } from '../lib/riskEngine';
 
@@ -16,6 +17,10 @@ const LEVEL_BADGE: Record<string, string> = {
 };
 
 export default function PatientList({ assessments, onSelect, onDelete, onNew }: Props) {
+  const riskResults = useMemo(
+    () => Object.fromEntries(assessments.map((a) => [a.id, calculateRisk(a)])),
+    [assessments],
+  );
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -38,7 +43,7 @@ export default function PatientList({ assessments, onSelect, onDelete, onNew }: 
       ) : (
         <ul className="divide-y divide-gray-100 border border-gray-200 rounded-xl overflow-hidden">
           {assessments.map((a) => {
-            const result = calculateRisk(a);
+            const result = riskResults[a.id];
             return (
               <li
                 key={a.id}

@@ -38,10 +38,8 @@ export default function AirwayAssessmentForm({ data, onChange }: Props) {
                   : 'border-gray-200 hover:border-indigo-300 hover:bg-gray-50'
               }`}
             >
-              <div className="flex items-center justify-center w-8 h-8 rounded-full font-bold text-lg mb-1
-                ${data.mallampatiScore === score ? 'bg-indigo-500 text-white' : 'bg-gray-100 text-gray-700'}">
-                <span
-                  className={`flex items-center justify-center w-8 h-8 rounded-full font-bold text-sm ${
+              <span
+                  className={`flex items-center justify-center w-8 h-8 rounded-full font-bold text-sm mb-1 ${
                     data.mallampatiScore === score
                       ? 'bg-indigo-500 text-white'
                       : 'bg-gray-100 text-gray-700'
@@ -49,7 +47,6 @@ export default function AirwayAssessmentForm({ data, onChange }: Props) {
                 >
                   {score}
                 </span>
-              </div>
               <div className="font-semibold text-sm text-gray-800">{label}</div>
               <div className="text-xs text-gray-500 mt-0.5">{desc}</div>
             </button>
